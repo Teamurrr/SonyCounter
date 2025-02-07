@@ -25,8 +25,18 @@ body{
 
 .stopwatch h2{
     margin-top: 110px;
-    font-size: 64px;
-    font-weight: 300;
+    font-size: 65px;
+    font-weight: 450;
+}
+
+h1{
+    font-size: 50px;
+    margin-bottom: 5px;
+}
+
+h3{
+    margin-top: 10px;
+    font-size: 30px;
 }
 
 
@@ -35,6 +45,7 @@ body{
     align-items: center;
     justify-content: center;
     margin-top: 50px;
+
 
 }
 
@@ -80,5 +91,4 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #777; 
 }
-
 
