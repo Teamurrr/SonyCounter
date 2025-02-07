@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Counter</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    
+    <div class="stopwatch">
+        <h2 id="displayTime">00:00:00</h2>
+
+        <input type="text" id="inputt" placeholder="Введите стоимость">
+        <input type="submit" value="Set" onclick="updatePrice()"> 
+        <h1 id="OurPrice">0</h1>
+        <h3>Сом</h3>
+
+        <div class="buttons">
+            <img src="images/stop.png" onclick="watchStop()" id="stop">
+            <img src="images/start.png" onclick="watchStart()" id="start">
+            <img src="images/reset.png" onclick="watchReset()" id="reset">
+        </div>
+    </div>
+
+    <script>
+        let [seconds, minutes, hours] = [0, 0, 0];
+        let displayTime = document.getElementById("displayTime");
+        let totPrice = document.getElementById("OurPrice");
+        let timer = null;
+        let costPerHour = 0;
+
+        function stopwatch() {
+            seconds++;
+            if (seconds == 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes == 60) {
+                    minutes = 0;
+                    hours++;
+                }
+            }
+
+            let h = hours < 10 ? "0" + hours : hours;
+            let m = minutes < 10 ? "0" + minutes : minutes;
+            let s = seconds < 10 ? "0" + seconds : seconds;
+
+            let totalPrice = (hours + minutes / 60 + seconds / 3600) * costPerHour;
+            totPrice.innerHTML = totalPrice.toFixed(2);
+
+            displayTime.innerHTML = `${h}:${m}:${s}`;
+        }
+
+        function watchStart() {
+            if (timer !== null) {
+                clearInterval(timer);
+            }
+            timer = setInterval(stopwatch, 1000);
+            setActive("start");
+        }
+
+        function watchStop() {
+            clearInterval(timer);
+            removeActive(); 
+        }
+
+        function watchReset() {
+            clearInterval(timer);
+            [seconds, minutes, hours] = [0, 0, 0];
+            displayTime.innerHTML = "00:00:00";
+            totPrice.innerHTML = "0";
+            removeActive(); 
+        }
+
+        function updatePrice() {
+            let cost = parseFloat(document.getElementById("inputt").value) || 0;
+            costPerHour = cost;
+        }
+
+        function setActive(activeId) {
+            document.querySelectorAll(".buttons img").forEach(img => img.classList.remove("active"));
+            document.getElementById(activeId).classList.add("active");
+        }
+
+        function removeActive() {
+            document.querySelectorAll(".buttons img").forEach(img => img.classList.remove("active"));
+        }
+    </script>
+</body>
+</html>
