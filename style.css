@@ -9,7 +9,7 @@ body{
     width: auto;
     max-width: 600px;
     background-image:linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(images/background.jpg) ;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
@@ -17,7 +17,7 @@ body{
     color: #fff;
     /* margin: 200px auto 0; */
     box-shadow: 0 10px 10px  rgba(0,0,0,0.2);
-    height: 630px;
+    height: 600px;
 
 
 }
