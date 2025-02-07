@@ -57,3 +57,28 @@ body{
 .buttons img:nth-child(2){
     width: 80px;;
 }
+
+input {
+    background-color: #040314; 
+    color: white; 
+    border: 1px solid #040314; 
+    padding: 8px;
+    border-radius: 5px;
+}
+
+input::placeholder {
+    color: #aaa; 
+}
+
+input[type="submit"] {
+    background-color: #040314; 
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #777; 
+}
+
+
